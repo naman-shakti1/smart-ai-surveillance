@@ -15,8 +15,8 @@ const SEV_ACCENT = {
 }
 
 const BAR_COLORS = [
-  'var(--red)','var(--orange)','var(--yellow)',
-  'var(--teal)','var(--cyan)','var(--purple)',
+  '#ef4444','#f97316','#f59e0b',
+  '#3b82f6','#38bdf8','#8b5cf6',
 ]
 
 function useInterval(fn, ms) {
@@ -109,7 +109,7 @@ export default function Dashboard() {
                 border: '1px solid rgba(255,61,90,0.3)',
                 borderRadius: 'var(--radius)',
                 fontSize: 12, color: 'var(--red)',
-                fontFamily: 'var(--font-mono)',
+                fontFamily: 'Inter',
                 fontWeight: 700,
                 animation: 'pulse-badge 2s ease infinite',
               }}>
@@ -132,7 +132,7 @@ export default function Dashboard() {
             value: activeCams,
             sub: `${streaming} streaming live`,
             icon: Camera,
-            color: 'var(--teal)',
+            color: '#f97316',
             accent: streaming > 0,
           },
           {
@@ -159,7 +159,7 @@ export default function Dashboard() {
           },
         ].map(({ label, value, sub, icon: Icon, color, urgent, accent }) => (
           <div key={label} className="stat-card" style={{
-            borderColor: urgent ? 'rgba(255,61,90,0.35)' : accent ? 'rgba(0,229,204,0.25)' : undefined,
+            borderColor: urgent ? 'rgba(239,68,68,0.35)' : accent ? 'rgba(0,229,204,0.25)' : undefined,
           }}>
             <div className="sc-label">
               {label}
@@ -177,7 +177,7 @@ export default function Dashboard() {
         {/* Alert breakdown chart */}
         <div className="card">
           <div className="card-header">
-            <Activity size={13} color="var(--teal)" />
+            <Activity size={13} color="#f97316" />
             Alert Breakdown
           </div>
           {chartData.length === 0 ? (
@@ -190,24 +190,24 @@ export default function Dashboard() {
               <BarChart data={chartData} barSize={22} margin={{ top: 4, right: 4, bottom: 0, left: -20 }}>
                 <XAxis
                   dataKey="name"
-                  tick={{ fill: 'var(--text-3)', fontSize: 10, fontFamily: 'Space Mono' }}
+                  tick={{ fill: 'var(--text-3)', fontSize: 10, fontFamily: 'Inter' }}
                   axisLine={false} tickLine={false}
                 />
                 <YAxis
-                  tick={{ fill: 'var(--text-3)', fontSize: 10, fontFamily: 'Space Mono' }}
+                  tick={{ fill: 'var(--text-3)', fontSize: 10, fontFamily: 'Inter' }}
                   axisLine={false} tickLine={false}
                 />
                 <Tooltip
-                  cursor={{ fill: 'rgba(0,229,204,0.05)' }}
+                  cursor={{ fill: 'rgba(59,130,246,0.08)' }}
                   contentStyle={{
                     background: 'var(--bg-700)',
                     border: '1px solid var(--border)',
                     borderRadius: 8,
                     fontSize: 12,
-                    fontFamily: 'Space Mono',
+                    fontFamily: 'Inter',
                   }}
                   labelStyle={{ color: 'var(--text-1)' }}
-                  itemStyle={{ color: 'var(--teal)' }}
+                  itemStyle={{ color: '#f97316' }}
                 />
                 <Bar dataKey="count" radius={[3, 3, 0, 0]}>
                   {chartData.map((_, i) => (
@@ -223,10 +223,10 @@ export default function Dashboard() {
         <div className="card">
           <div className="card-header" style={{ justifyContent: 'space-between' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <Bell size={13} color="var(--teal)" />
+              <Bell size={13} color="#f97316" />
               Recent Alerts
             </span>
-            <Link to="/alerts" style={{ fontSize: 10, color: 'var(--teal)', fontFamily: 'var(--font-mono)' }}>
+            <Link to="/alerts" style={{ fontSize: 10, color: '#f97316', fontFamily: 'Inter' }}>
               VIEW ALL →
             </Link>
           </div>
@@ -252,7 +252,7 @@ export default function Dashboard() {
                       <div style={{ fontSize: 12, fontWeight: 600, color: 'var(--text-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {a.type.replace(/_/g, ' ')}
                       </div>
-                      <div style={{ fontSize: 10, color: 'var(--text-3)', fontFamily: 'var(--font-mono)', marginTop: 1 }}>
+                      <div style={{ fontSize: 10, color: 'var(--text-3)', fontFamily: 'Inter', marginTop: 1 }}>
                         CAM {a.camera_id} · {new Date(a.timestamp * 1000).toLocaleTimeString()}
                       </div>
                     </div>
@@ -271,10 +271,10 @@ export default function Dashboard() {
       <div className="card">
         <div className="card-header" style={{ justifyContent: 'space-between' }}>
           <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <Camera size={13} color="var(--teal)" />
+            <Camera size={13} color="#f97316" />
             Camera Status
           </span>
-          <Link to="/cameras" style={{ fontSize: 10, color: 'var(--teal)', fontFamily: 'var(--font-mono)' }}>
+          <Link to="/cameras" style={{ fontSize: 10, color: '#f97316', fontFamily: 'Inter' }}>
             MANAGE →
           </Link>
         </div>
@@ -297,7 +297,7 @@ export default function Dashboard() {
                   padding: '12px 14px',
                   background: 'var(--bg-700)',
                   borderRadius: 'var(--radius)',
-                  border: `1px solid ${isStreaming ? 'rgba(0,230,118,0.25)' : cam.is_active ? 'var(--border)' : 'var(--border-dim)'}`,
+                  border: `1px solid ${isStreaming ? 'rgba(16,185,129,0.28)' : cam.is_active ? 'var(--border)' : 'var(--border-dim)'}`,
                   display: 'flex',
                   alignItems: 'center',
                   gap: 12,
@@ -318,7 +318,7 @@ export default function Dashboard() {
                     <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-1)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {cam.name}
                     </div>
-                    <div style={{ fontSize: 10, color: isStreaming ? 'var(--green)' : cam.is_active ? 'var(--text-3)' : 'var(--red)', fontFamily: 'var(--font-mono)', marginTop: 2 }}>
+                    <div style={{ fontSize: 10, color: isStreaming ? 'var(--green)' : cam.is_active ? 'var(--text-3)' : 'var(--red)', fontFamily: 'Inter', marginTop: 2 }}>
                       {isStreaming ? '● STREAMING' : cam.is_active ? '◌ STARTING' : '○ INACTIVE'}
                     </div>
                   </div>

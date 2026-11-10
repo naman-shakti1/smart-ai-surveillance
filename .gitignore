@@ -16,4 +16,17 @@ images/
 # videos
 *.mp4
 videos/
-backend/videos/
+backend/videos/.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite
+*.sqlite3
+dist/
+
+.venv/
